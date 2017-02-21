@@ -1,0 +1,26 @@
+---
+plugins:
+    - react
+
+extends:
+    - eslint:recommended
+    - standard
+    - plugin:react/recommended
+
+parserOptions:
+    ecmaFeatures:
+        jsx: true
+
+rules:
+    comma-dangle: [2, always-multiline]
+    max-len: 0
+    no-multiple-empty-lines: [2, {max: 3}]
+    space-before-function-paren:
+    - 2
+    -   anonymous: always
+        named: never
+        asyncArrow: ignore
+
+env:
+    browser: true,
+    node: true
