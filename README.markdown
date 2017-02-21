@@ -1,5 +1,7 @@
 # Spectacle Boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/homezen/composable-components-react-talk.svg)](https://greenkeeper.io/)
+
 ## Reference
 
 The Spectacle core API is available at [https://github.com/FormidableLabs/spectacle/blob/master/README.markdown](https://github.com/FormidableLabs/spectacle/blob/master/README.markdown).
