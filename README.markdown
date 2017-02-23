@@ -1,4 +1,4 @@
-# Composable components for moving quickly
+# Composable components for getting stuff done
 
 - npm i
 - npm start
