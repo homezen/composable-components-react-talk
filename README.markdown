@@ -5,3 +5,5 @@
 - [http://localhost:3000](http://localhost:3000)
 
 CSS not included in code samples.
+
+Built with [spectacle](https://github.com/FormidableLabs/spectacle)
