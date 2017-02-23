@@ -10,6 +10,7 @@ import uri from 'uri-js'
 import styles from './base.css'
 import {Link as RRLink} from 'react-router'
 
+
 export const H1 = ({className}) => (
   <h1 className={cn(styles.h1, className)} />
 )
@@ -22,8 +23,16 @@ export const H3 = ({className}) => (
   <h3 className={cn(styles.h3, className)} />
 )
 
-export const P = ({className, ...props}) => (
-  <p className={cn(styles.p, className)} />
+export const P = ({
+  className,
+  size,
+  ...props
+}) => (
+  <p className={cn(
+    styles.p,
+    className,
+    styles[`pSize${size}`])}
+  />
 )
 
 // These are here so the above
@@ -42,6 +51,11 @@ H3.propTypes = {
 
 P.propTypes = {
   className: PropTypes.string,
+  size: PropTypes.number, // 1-6
+}
+
+P.defaultProps = {
+  size: 3,
 }
 
 const getButtonClassName = (size, light, secondary, className) => cn(className, {

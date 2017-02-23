@@ -30,7 +30,7 @@ require('spectacle/lib/themes/default/index.css')
 const images = {
   homezenLogo: require('../assets/images/homezen-logo.png'),
   buttons: require('../assets/images/buttons.png'),
-  buttonLinks: require('../assets/images/buttons.png'),
+  buttonLinks: require('../assets/images/button-links.png'),
   testimonials: require('../assets/images/testimonials.png'),
   tipsLibraryHero: require('../assets/images/tips-library-hero.png'),
   tipsLibraryContent: require('../assets/images/tips-library-content.png'),
@@ -60,18 +60,21 @@ const theme = createTheme({
 
 // Real world composition using base components
 const TitleSlide = (
-    <Slide transition={['zoom']} bgColor="primary">
-        <Heading size={1} fit caps lineHeight={2} textColor="secondary">
-          {'Composable components to get stuff done'}
-        </Heading>
-        <Text margin="1em 0 0 0" textColor="tertiary" size={1} fit bold>
-          {'Using base and layout components to iterate quickly and build flexible applications.'}
-        </Text>
-    </Slide>
+  <Slide transition={['zoom']} bgColor="primary">
+    <Heading size={1} fit caps lineHeight={2} textColor="secondary">
+      {'Composable components for getting stuff done'}
+    </Heading>
+    <Text margin="1em 0 0 0" textColor="tertiary" size={1} fit bold>
+      {'Using base and layout components to iterate quickly and build flexible applications.'}
+    </Text>
+  </Slide>
 )
 
 const AuthorSlide = (
-  <Slide transition={['fade']}>
+  <Slide
+    transition={['fade']}
+    notes='product app ~ year; one major redesign; applied these patterns in redesign'
+  >
     <Code
       bgColor='secondary'
       textColor='primary'
@@ -178,7 +181,7 @@ const BellCurveGraphSlide = (
 
 const SolutionSlide = (
   <Slide>
-    <Heading size={1} textColor='secondary' margin='0 0 1em 0'>
+    <Heading size={1} textColor='secondary' >
       {'Solution'}
     </Heading>
     <Appear>
@@ -188,7 +191,7 @@ const SolutionSlide = (
     </Appear>
     <Appear>
       <Text margin='1em 0' textColor='tertiary'>
-        {'Duplication over the wrong abstraction'}
+        {'Prefer duplication over the wrong abstraction'}
       </Text>
     </Appear>
   </Slide>
@@ -257,7 +260,7 @@ const BaseComponentsTitleSlide = (
       {'Base components'}
     </Heading>
     <Text margin='1em 0' textColor='tertiary'>
-      {'Wraps html element'}
+      {'Wraps HTML element'}
     </Text>
     <Text margin='1em 0' textColor='tertiary'>
       {'Applies application level styles'}
@@ -286,9 +289,10 @@ const BaseComponentsButtonExampleSlide = (
     lang='jsx'
     code={require('!raw-loader!../assets/code/base.js')}
     ranges={[
-      {loc: [54, 71], note: ''},
-      {loc: [55, 61], note: 'Takes a couple extra props'},
-      {loc: [62, 68], note: 'Only used for styling'},
+      {loc: [68, 84], note: ''},
+      {loc: [69, 74], note: 'Takes a couple extra props'},
+      {loc: [76, 82], note: 'Only used for styling'},
+      {loc: [82, 84], note: 'Pass through props'},
     ]} />
 )
 
@@ -312,9 +316,9 @@ const BaseComponentsLinkExampleSlide = (
     lang='jsx'
     code={require('!raw-loader!../assets/code/base.js')}
     ranges={[
-      {loc: [92, 97], note: 'RawLink Component - adds functionality'},
-      {loc: [104, 117], note: 'StyledLink - adds styling'},
-      {loc: [127, 129], note: 'Export our styled link as our base link component'},
+      {loc: [106, 110], note: 'RawLink Component - adds functionality'},
+      {loc: [118, 130], note: 'StyledLink - adds styling'},
+      {loc: [141, 142], note: 'Export our styled link as our base link component'},
     ]} />
 )
 
@@ -337,9 +341,9 @@ const BaseComponentsButtonLinkExampleSlide = (
     lang='jsx'
     code={require('!raw-loader!../assets/code/base.js')}
     ranges={[
-      {loc: [130, 146], note: 'ButtonLink Component'},
-      {loc: [131, 137], note: 'Same extra props as Button'},
-      {loc: [137, 144], note: 'Uses RawLink with button styles'},
+      {loc: [144, 160], note: 'ButtonLink Component'},
+      {loc: [145, 150], note: 'Same extra props as Button'},
+      {loc: [151, 158], note: 'Uses RawLink with button styles'},
     ]} />
 )
 
@@ -358,8 +362,6 @@ const TestimonialComponentSlide = (
       {loc: [10, 27], note: 'Component using base components'},
       {loc: [2, 8], note: 'Imports base components'},
       {loc: [15, 26], note: 'Uses base components - needs minimal styling'},
-      {loc: [16, 19], note: 'Add border radius - could be Headshot component'},
-      {loc: [22, 25], note: 'Add margin'},
     ]} />
 )
 
@@ -383,9 +385,9 @@ const StyleGuideCodeSlide = (
     lang='jsx'
     code={require('!raw-loader!../assets/code/style-guide.js')}
     ranges={[
-      {loc: [75, 93], note: 'Easy to use jsx'},
-      {loc: [93, 110], note: ''},
-      {loc: [110, 130], note: ''},
+      {loc: [61, 76], note: 'Easy to use jsx'},
+      {loc: [79, 94], note: ''},
+      {loc: [97, 118], note: ''},
     ]} />
 )
 
@@ -423,7 +425,7 @@ const ListPageHeroAbstractionSlide = (
     lang='js'
     code={require('!raw-loader!../assets/code/list-page-hero-initial.js')}
     ranges={[
-      {loc: [8, 27], note: ''},
+      {loc: [8, 28], note: ''},
     ]} />
 )
 
@@ -522,6 +524,9 @@ const ThanksSlide = (
     <Heading size={1} textColor='secondary'>
       {'Thanks'}
     </Heading>
+    <Text textColor='tertiary'>
+      {'Questions?'}
+    </Text>
   </Slide>
 )
 
@@ -535,12 +540,8 @@ export default class Presentation extends React.Component {
           {ContainerViewComponentsSlide}
           {PresentationalComponentsBreakdownSlide}
           {BackgroundSlide}
-          {/* JordanScalesQuote */}
           {BellCurveGraphSlide}
           {ProblemSlide}
-          {/* PossibleSolutionsSlide */}
-          {/* GorillaBananaQuoteSlide */}
-          {/* GoalsSlide */}
           {SolutionSlide}
           {SolutionComponentsBreakdownSlide}
           {SolutionApproachBreakdownSlide}
